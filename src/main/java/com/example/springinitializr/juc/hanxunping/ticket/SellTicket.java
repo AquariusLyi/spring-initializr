@@ -9,7 +9,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class SellTicket {
     public static void main(String[] args) {
-
+//        CpuNum cpuNum = new CpuNum();
+//        cpuNum.testa();
         //测试
 //        SellTicket01 sellTicket01 = new SellTicket01();
 //        SellTicket01 sellTicket02 = new SellTicket01();
@@ -22,7 +23,7 @@ public class SellTicket {
 
 
         System.out.println("===使用实现接口方式来售票=====");
-        SellTicket02 sellTicket02 = new SellTicket02();
+        SellTicket03 sellTicket02 = new SellTicket03();
 
         new Thread(sellTicket02).start();//第1个线程-窗口
         new Thread(sellTicket02).start();//第2个线程-窗口
@@ -100,8 +101,7 @@ class SellTicket03 implements Runnable {
     @Override
     public void run() {
         while (true) {
-            int ticketNum = atomicInteger.get();
-            if (ticketNum <= 0) {
+            if ( atomicInteger.get() <= 0) {
                 System.out.println("售票结束...");
                 break;
             }
@@ -112,10 +112,10 @@ class SellTicket03 implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            --ticketNum;
+            atomicInteger.getAndDecrement();
             System.out.println("窗口 " + Thread.currentThread().getName() + " 售出一张票"
-                    + " 剩余票数=" + (ticketNum));//1 - 0 - -1  - -2
-            atomicInteger.set(ticketNum);
+                    + " 剩余票数=" + ( atomicInteger.get()));//1 - 0 - -1  - -2
+            atomicInteger.set( atomicInteger.get());
 
         }
     }
