@@ -12,13 +12,11 @@ import java.util.concurrent.TimeoutException;
  * @auther zzyy
  * @create 2021-03-02 17:54
  */
-public class CompletableFutureAPIDemo
-{
-    public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException
-    {
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 20, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(50), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
-
-
+public class CompletableFutureAPIDemo {
+    public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 20, 1L,
+                TimeUnit.SECONDS, new LinkedBlockingQueue<>(50),
+                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
         System.out.println(CompletableFuture.supplyAsync(() -> {
             return 1;
         }).thenApply(f -> {
@@ -33,16 +31,13 @@ public class CompletableFutureAPIDemo
         }).join());
 
 
-
-
         threadPoolExecutor.shutdown();
     }
 
     /**
      * thenCombine
      */
-    public static void m5()
-    {
+    public static void m5() {
         System.out.println(CompletableFuture.supplyAsync(() -> {
             return 10;
         }).thenCombine(CompletableFuture.supplyAsync(() -> {
@@ -55,8 +50,7 @@ public class CompletableFutureAPIDemo
     /**
      * 对计算速度进行选用
      */
-    public static void m4()
-    {
+    public static void m4() {
         System.out.println(CompletableFuture.supplyAsync(() -> {
             //暂停几秒钟线程
             try {
@@ -77,27 +71,32 @@ public class CompletableFutureAPIDemo
         }).join());
 
         //暂停几秒钟线程
-        try { TimeUnit.SECONDS.sleep(3); } catch (InterruptedException e) { e.printStackTrace(); }
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * 对计算结果进行消费
      */
-    public static void m3()
-    {
+    public static void m3() {
         CompletableFuture.supplyAsync(() -> {
             return 1;
         }).thenApply(f -> {
-            return f+2;
+            return f + 2;
         }).thenApply(f -> {
-            return f+3;
+            return f + 3;
         }).thenAccept(r -> System.out.println(r));
 
 
-        System.out.println(CompletableFuture.supplyAsync(() -> "resultA").thenRun(() -> {}).join());
+        System.out.println(CompletableFuture.supplyAsync(() -> "resultA").thenRun(() -> {
+        }).join());
 
 
-        System.out.println(CompletableFuture.supplyAsync(() -> "resultA").thenAccept(resultA -> {}).join());
+        System.out.println(CompletableFuture.supplyAsync(() -> "resultA").thenAccept(resultA -> {
+        }).join());
 
 
         System.out.println(CompletableFuture.supplyAsync(() -> "resultA").thenApply(resultA -> resultA + " resultB").join());
@@ -106,19 +105,18 @@ public class CompletableFutureAPIDemo
     /**
      * 对计算结果进行处理
      */
-    public static void m2()
-    {
+    public static void m2() {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 20, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(50), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
 
         System.out.println(CompletableFuture.supplyAsync(() -> {
             return 1;
-        }).handle((f,e) -> {
+        }).handle((f, e) -> {
             System.out.println("-----1");
             return f + 2;
-        }).handle((f,e) -> {
+        }).handle((f, e) -> {
             System.out.println("-----2");
             return f + 3;
-        }).handle((f,e) -> {
+        }).handle((f, e) -> {
             System.out.println("-----3");
             return f + 4;
         }).whenComplete((v, e) -> {
@@ -136,27 +134,35 @@ public class CompletableFutureAPIDemo
 
     /**
      * 获得结果和触发计算
+     *
      * @throws InterruptedException
      * @throws ExecutionException
      */
-    public static void m1() throws InterruptedException, ExecutionException
-    {
+    public static void m1() throws InterruptedException, ExecutionException {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 20, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(50), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
 
         CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
             //暂停几秒钟线程
             //暂停几秒钟线程
-            try { TimeUnit.SECONDS.sleep(2); } catch (InterruptedException e) { e.printStackTrace(); }
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             return 1;
-        },threadPoolExecutor);
+        }, threadPoolExecutor);
 
         //System.out.println(future.get());
         //System.out.println(future.get(2L,TimeUnit.SECONDS));
         //暂停几秒钟线程
-        try { TimeUnit.SECONDS.sleep(1); } catch (InterruptedException e) { e.printStackTrace(); }
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         //System.out.println(future.getNow(9999));
 
-        System.out.println(future.complete(-44)+"\t"+future.get());
+        System.out.println(future.complete(-44) + "\t" + future.get());
 
 
         threadPoolExecutor.shutdown();

@@ -14,7 +14,9 @@ public class CompletableFutureDemo
 {
     public static void main(String[] args)throws Exception
     {
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 20, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(50), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 20, 1L,
+                TimeUnit.SECONDS, new LinkedBlockingQueue<>(50), Executors.defaultThreadFactory(),
+                new ThreadPoolExecutor.AbortPolicy());
 
 
 
