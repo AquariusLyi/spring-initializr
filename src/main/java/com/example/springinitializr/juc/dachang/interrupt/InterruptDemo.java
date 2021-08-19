@@ -19,8 +19,9 @@ public class InterruptDemo
         System.out.println("111111");
         Thread.currentThread().interrupt();///----false---> true
         System.out.println("222222");
-        System.out.println(Thread.currentThread().getName()+"---"+Thread.interrupted());
-        System.out.println(Thread.currentThread().getName()+"---"+Thread.interrupted());
+        System.out.println(Thread.currentThread().getName()+"---"+Thread.currentThread().isInterrupted());
+        System.out.println(Thread.currentThread().getName()+"---"+Thread.currentThread().isInterrupted());
+        m3();
     }
 
     public static void m5()
@@ -81,6 +82,7 @@ public class InterruptDemo
             while (true) {
                 if (Thread.currentThread().isInterrupted()) {
                     System.out.println("-----isInterrupted() = true，程序结束。");
+                    boolean interrupted = Thread.currentThread().isInterrupted();
                     break;
                 }
                 System.out.println("------hello Interrupt");
