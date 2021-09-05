@@ -1,7 +1,5 @@
-package com.atguigu.java;
+package com.example.springinitializr.JVM.DC.chapter02_classload;
 
-import java.io.PrintStream;
-import java.sql.SQLOutput;
 import java.util.Random;
 
 /**

@@ -1,4 +1,4 @@
-package com.atguigu.java1;
+package com.example.springinitializr.JVM.DC.chapter02_classload;
 
 import org.junit.Test;
 

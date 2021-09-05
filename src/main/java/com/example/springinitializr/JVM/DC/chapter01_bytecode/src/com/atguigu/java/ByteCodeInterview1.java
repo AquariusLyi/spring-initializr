@@ -1,4 +1,5 @@
-package com.atguigu.java;
+package com.example.springinitializr.JVM.DC.chapter01_bytecode.src.com.atguigu.java;
+
 
 /**
  * @author shkstart
@@ -28,7 +29,8 @@ class Son extends Father {
 
 public class ByteCodeInterview1 {
     public static void main(String[] args) {
-        Father f = new Son();
+        // Son f = new Son(); 调用的谁就是谁的x
+        Son f = new Son();
         System.out.println(f.x);
     }
 }

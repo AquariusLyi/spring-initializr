@@ -1,4 +1,4 @@
-package com.atguigu.java1;
+package com.example.springinitializr.JVM.DC.chapter01_bytecode.src.com.atguigu.java1;
 
 /**
  * @author shkstart

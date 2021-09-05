@@ -1,4 +1,4 @@
-package com.atguigu.java2;
+package com.example.springinitializr.JVM.DC.chapter02_classload;
 
 /**
  * @author shkstart
@@ -10,6 +10,7 @@ public class Test03 {
         System.out.println(f.x);
     }
 }
+
 class Father{
     int x = 10;
     public Father(){
@@ -20,6 +21,7 @@ class Father{
         System.out.println("Father.x = " + x);
     }
 }
+
 class Son extends Father{
     int x = 30;
     public Son(){
