@@ -110,8 +110,9 @@ public class CompletableFutureAPIDemo {
 
         System.out.println(CompletableFuture.supplyAsync(() -> {
             return 1;
-        }).handle((f, e) -> {
+        }).handle((f, e) -> { // 这里用handle 替代thenapply 就是异常了，也可以执行完 相当于tyr fally
             System.out.println("-----1");
+            int i = 100/ 0;
             return f + 2;
         }).handle((f, e) -> {
             System.out.println("-----2");
