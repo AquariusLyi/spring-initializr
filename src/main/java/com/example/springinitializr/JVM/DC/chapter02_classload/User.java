@@ -1,4 +1,4 @@
-//package com.example.springinitializr.JVM.DC.chapter02_classload;
+package com.example.springinitializr.JVM.DC.chapter02_classload;//package com.example.springinitializr.JVM.DC.chapter02_classload;
 //
 ///**
 // * @author shkstart
