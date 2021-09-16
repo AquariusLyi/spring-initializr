@@ -1,7 +1,7 @@
 package com.example.springinitializr.design.HM.proxy.cglib;
 
 /*****
- * @Author: http://www.itheima.com
+ * @Author: Lyi
  * @Description: com.itheima.proxy.jdk.LandlordService
  ****/
 public interface LandlordService {
