@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /*****
- * @Author: http://www.itheima.com
+ * @Author: Lyi
  * @Description: com.itheima.shop.proxy.FileUploadProxy
  ****/
 @Component
