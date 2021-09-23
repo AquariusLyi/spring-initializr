@@ -1,14 +1,9 @@
 package com.example.springinitializr.design.HM.shop.proxy;
 
 import org.csource.fastdfs.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 /*****
  * @Author: http://www.itheima.com
@@ -52,7 +47,7 @@ public class FastdfsFileUpoad implements FileUpload{
     static {
         try {
             //获取tracker的配置文件fdfs_client.conf的位置
-            String filePath = new ClassPathResource("fdfs_client.conf").getPath();
+            String filePath = new ClassPathResource("shop/fdfs_client.conf").getPath();
             //加载tracker配置信息
             ClientGlobal.init(filePath);
         } catch (Exception e) {

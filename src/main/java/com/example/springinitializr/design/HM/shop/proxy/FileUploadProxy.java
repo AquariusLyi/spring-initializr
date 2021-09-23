@@ -11,10 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.Map;
 
-/*****
+/**
  * @Author: Lyi
  * @Description: com.itheima.shop.proxy.FileUploadProxy
- ****/
+ */
 @Component
 @ConfigurationProperties(prefix = "upload")
 public class FileUploadProxy implements ApplicationContextAware{
