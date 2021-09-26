@@ -6,7 +6,6 @@ public class Testr {
         Thread t = new Thread(()->{
             System.out.println("123");
         });
-
         System.out.println(t.getState());
 
         t.start();

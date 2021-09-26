@@ -1,5 +1,8 @@
 package com.example.springinitializr.juc.HM.demo.demo;
 
+/**
+ * volatile不能保证原子性例子
+ */
 public class BadVolatile {
     private static volatile int i=0;
     public int get(){

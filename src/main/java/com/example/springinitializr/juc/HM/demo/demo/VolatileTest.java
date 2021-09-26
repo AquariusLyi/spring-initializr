@@ -1,7 +1,7 @@
 package com.example.springinitializr.juc.HM.demo.demo;
 
 public class VolatileTest extends Thread {
-    private static boolean flag = true;
+    private volatile static boolean flag = true;
 
     public void run() {
         while (flag) ;
