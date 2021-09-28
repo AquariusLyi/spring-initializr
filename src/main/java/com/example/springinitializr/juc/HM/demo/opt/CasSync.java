@@ -1,10 +1,6 @@
 package com.example.springinitializr.juc.HM.demo.opt;
 
 
-import sun.misc.Unsafe;
-
-import java.lang.reflect.Field;
-
 public class CasSync implements Runnable{
     long start = System.currentTimeMillis();
     int i=0;
@@ -33,23 +29,18 @@ public class CasSync implements Runnable{
 //                j++;
 //                i = j;
 //            }
-
-
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         //实际开发中，要用atomic包，或者while+synchronized自旋
-//        synchronized (this){
-//            //注意这里！
-//            while (j != i){
-//                j = i;
-//            }
-//            i = j+1;
-//        }
+        synchronized (this){
+            //注意这里！
+            while (j != i){
+                j = i;
+            }
+            i = j+1;
+        }
 
         System.out.println(Thread.currentThread().getName()+
                 " ok,time="+(System.currentTimeMillis() - start));
@@ -64,5 +55,6 @@ public class CasSync implements Runnable{
         new Thread(test).start();
         Thread.currentThread().sleep(1000);
         System.out.println("last value="+test.i);
+        // 线程一、二均在100ms+，总耗时200ms，最终结果还是2
     }
 }

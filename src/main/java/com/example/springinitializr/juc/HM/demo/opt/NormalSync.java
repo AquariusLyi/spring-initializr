@@ -23,7 +23,9 @@ public class NormalSync implements Runnable{
         NormalSync test = new NormalSync();
         new Thread(test).start();
         new Thread(test).start();
+        new Thread(test).start();
         Thread.currentThread().sleep(1000);
         System.out.println("last value="+test.i);
+        //线程二最终耗时会在200ms+，总耗时300ms，原因是悲观锁卡在了read后的耗时操作上，但是保证了最终结果是 2
     }
 }    
